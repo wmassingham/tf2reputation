@@ -12,17 +12,17 @@
 	if($openid->validate() || isset($_SESSION['id'])) {
 
 		$userid = explode("/", $_SESSION['id'])[5];
-		$userdata = new SteamAPI($userid);
+		$loggedinuserdata = new SteamAPI($userid);
 //		$userdata = $user->getUserData();
 
 		// These are in reverse order because they are floated right
 		echo '<li class="navbar-right"><a style="padding:4px 15px 0 0;" href="profile.php?id=' .
-			$userdata->data->response->players[0]->steamid . '"><img class="avatar-small ' .
-			$userdata->onlineState . '" alt="Player avatar" src="' .
-			$userdata->data->response->players[0]->avatarfull . '"></a>';
+			$loggedinuserdata->data->response->players[0]->steamid . '"><img class="avatar-small ' .
+			$loggedinuserdata->onlineState . '" alt="Player avatar" src="' .
+			$loggedinuserdata->data->response->players[0]->avatarfull . '"></a>';
 		echo '<li class="navbar-right"><a href="profile.php?id=' .
-			$userdata->data->response->players[0]->steamid . '">' .
-			$userdata->data->response->players[0]->personaname . '</a></li>';
+			$loggedinuserdata->data->response->players[0]->steamid . '">' .
+			$loggedinuserdata->data->response->players[0]->personaname . '</a></li>';
 
 	} else {
 		echo '<li class="navbar-right"><a href="login.php?login&amp;loc=' . urlencode($_SERVER['REQUEST_URI']) . 
