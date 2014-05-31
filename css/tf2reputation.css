@@ -1,15 +1,24 @@
 html, body {
 	height: 100%;
 	padding: 0;
+	background-color: #ddd;
 }
 
 a:hover {
-	/*text-color: #fff;*/
-	/*text-shadow: 1px 1px 4px #fff;*/
+	text-decoration: none;
+	opacity: 0.4;
 }
 
 .navbar {
 	border-radius: 0 0 10px 10px;
+}
+
+.navbar a {
+	opacity: 0.75;
+}
+
+.navbar a:hover {
+	opacity: 1;
 }
 
 .navbar-collapse, .navbar-form {
@@ -21,7 +30,7 @@ a:hover {
 }
 
 .navbar-right {
-	
+
 }
 
 #wrap {
@@ -37,29 +46,40 @@ a:hover {
 footer {
 	/* see #wrap */
 	height: 60px;
-	background-color: #eee;
+	background-color: #fff;
 	border-radius: 5px 5px 0 0;
 	margin-top: 20px;
 }
 
+.jumbotron {
+	background-color: #fff;
+}
+
+.well {
+	border: none;
+	background-color: #fff;
+}
+
 .avatar-full {
+	border: 5px solid;
 	border-radius: 5px;
 }
 
 .avatar-small {
 	float: left;
 	width: 34px;
+	border: 2px solid;
 	border-radius: 2px;
 }
 
 .offline {
-	border: 2px solid #545454;
+	border-color: #545454;
 }
 
 .online {
-	border: 2px solid #7bafd6;
+	border-color: #7bafd6;
 }
 
 .ingame {
-	border: 2px solid #9bc861;
+	border-color: #9bc861;
 }
