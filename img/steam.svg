@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r"
+   sodipodi:docname="steam4.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8"
+     inkscape:cx="36.36642"
+     inkscape:cy="32.593209"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="961"
+     inkscape:window-x="1272"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:snap-page="true"
+     inkscape:snap-center="true"
+     inkscape:snap-bbox="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     borderlayer="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-988.36218)">
+    <path
+       style="fill:#4b4b4b;fill-opacity:1;stroke:none"
+       d="M 8 0 C 3.568 -5.9211895e-016 0 3.568 0 8 L 0 30.125 A 4.8324833 4.8324833 0 0 1 1.875 30.53125 L 18.3125 37.34375 C 20.022222 35.919956 22.212814 35.09375 24.59375 35.09375 C 24.737459 35.09375 24.85778 35.08375 25 35.09375 L 32.96875 23.96875 C 32.96655 23.86765 32.96875 23.7891 32.96875 23.6875 C 32.96875 16.3121 38.847774 10.3125 46.09375 10.3125 C 53.339726 10.3125 59.1875 16.3121 59.1875 23.6875 C 59.1875 31.0628 53.339726 37.03125 46.09375 37.03125 C 45.887276 37.03125 45.672892 37.04125 45.46875 37.03125 L 34.46875 44.875 C 34.47173 44.9768 34.5 45.0849 34.5 45.1875 C 34.5 50.764 30.072415 55.28125 24.59375 55.28125 C 19.49047 55.28125 15.302033 51.357324 14.75 46.3125 L 0 40.21875 L 0 56 C 0 60.432 3.568 64 8 64 L 56 64 C 60.432 64 64 60.432 64 56 L 64 8 C 64 3.568 60.432 0 56 0 L 8 0 z M 46.09375 15.03125 C 41.337353 15.03125 37.4375 18.931 37.4375 23.6875 C 37.4375 28.4439 41.337353 32.3125 46.09375 32.3125 C 50.850147 32.3125 54.71875 28.4439 54.71875 23.6875 C 54.71875 18.931 50.850147 15.03125 46.09375 15.03125 z M 46.09375 17.59375 C 49.466639 17.59375 52.15625 20.3145 52.15625 23.6875 C 52.15625 27.0604 49.466639 29.75 46.09375 29.75 C 42.720861 29.75 40 27.0604 40 23.6875 C 40 20.3145 42.720861 17.59375 46.09375 17.59375 z M 24.59375 37.78125 C 23.405758 37.78125 22.279744 38.093653 21.28125 38.59375 L 26.40625 40.71875 C 26.424613 40.726182 26.450504 40.711102 26.46875 40.71875 A 4.8324833 4.8324833 0 0 1 26.96875 40.96875 C 27.075637 41.029298 27.179758 41.087988 27.28125 41.15625 A 4.8324833 4.8324833 0 0 1 23.59375 49.9375 C 23.441711 49.906602 23.302658 49.857126 23.15625 49.8125 A 4.8324833 4.8324833 0 0 1 23.0625 49.78125 C 22.780701 49.688968 22.506081 49.577087 22.25 49.4375 L 17.53125 47.46875 C 18.50364 50.435618 21.314035 52.59375 24.59375 52.59375 C 28.672691 52.59375 31.96875 49.2665 31.96875 45.1875 C 31.96875 41.1085 28.672691 37.78125 24.59375 37.78125 z "
+       transform="translate(0,988.36218)"
+       id="rect4456" />
+    <rect
+       style="opacity:0;fill:#ff0000;fill-opacity:1;stroke:none"
+       id="rect4435"
+       width="64"
+       height="64"
+       x="0"
+       y="988.36218" />
+    <rect
+       style="opacity:0;fill:#ff0000;fill-opacity:1;stroke:none"
+       id="rect4430"
+       width="64"
+       height="64"
+       x="0"
+       y="988.36218" />
+  </g>
+</svg>
