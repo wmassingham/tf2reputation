@@ -16,7 +16,7 @@
 //		$userdata = $user->getUserData();
 
 		// These are in reverse order because they are floated right
-		echo '<li class="navbar-right"><a style="padding:4px 15px 0 0;" href="profile.php?id=' .
+		echo '<li class="navbar-right"><a style="padding:6px 15px 0 0;" href="profile.php?id=' .
 			$loggedinuserdata->data->response->players[0]->steamid . '"><img class="avatar-small ' .
 			$loggedinuserdata->onlineState . '" alt="Player avatar" src="' .
 			$loggedinuserdata->data->response->players[0]->avatarfull . '"></a>';

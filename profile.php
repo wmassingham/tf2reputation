@@ -17,31 +17,31 @@
 ?>
 
 <div class="container">
-  <div class="row row-offcanvas row-offcanvas-right">
-    <div class="col-xs-12 col-sm-9">
-      <p class="pull-right visible-xs">
-        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-      </p>
-      <div class="row jumbotron">
-        <div class="col-4 col-sm-4 col-lg-4">
-          <?php echo '<img class="img-responsive avatar-full ' . $userdata->onlineState . '" alt="Player avatar" src="' . $userdata->data->response->players[0]->avatarfull . '">'; ?>
-        </div>
-        <div class="col-8 col-sm-8 col-lg-8">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-lg-12"><h1><?php echo $userdata->data->response->players[0]->personaname; ?></h1></div>
-          </div>
-          <div class="row">
+	<div class="row row-offcanvas row-offcanvas-right">
+		<div class="col-xs-12 col-sm-9">
+			<p class="pull-right visible-xs">
+				<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+			</p>
+			<div class="row jumbotron">
+				<div class="col-sm-4 col-xs-3">
+					<?php echo '<img class="img-responsive avatar-full ' . $userdata->onlineState . '" alt="Player avatar" src="' . $userdata->data->response->players[0]->avatarfull . '">'; ?>
+				</div>
+				<div class="col-sm-8 col-xs-9">
+					<div class="row">
+						<div class="col-md-12"><h1><?php echo $userdata->data->response->players[0]->personaname; ?></h1></div>
+					</div>
+					<div class="row community-links">
 						<?php
 							$id = $userdata->data->response->players[0]->steamid;
-							echo '<div class="col-3 col-sm-3 col-lg-3"><a href="http://www.tf2outpost.com/user/'.$id.'">TF2Outpost</a></div>
-								<div class="col-3 col-sm-3 col-lg-3"><a href="http://backpack.tf/profiles/'.$id.'">backpack.tf</a></div>
-								<div class="col-3 col-sm-3 col-lg-3"><a href="http://steamrep.com/profiles/'.$id.'">SteamRep</a></div>
-								<div class="col-3 col-sm-3 col-lg-3"><a>button4</a></div>';
+							echo '<div class="col-xs-2"><a href="http://steamcommunity.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steam.svg"></a></div>
+								<div class="col-xs-2"><a href="http://www.tf2outpost.com/user/' . $id . '"><img class="img-responsive" src="/img/tf2outpost.svg"></a></div>
+								<div class="col-xs-2"><a href="http://backpack.tf/profiles/' . $id . '"><img class="img-responsive" src="/img/backpacktf.svg"></a></div>
+								<div class="col-xs-2"><a href="http://steamrep.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steamrep.svg"></a></div>';
 						?>
-          </div>
-        </div>
-      </div>
-      <div class="row"> 
+					</div>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-1 col-sm-1 col-lg-1"></div>
 				<div class="col-9 col-sm-9 col-lg-9">
 					<?php // select * from comments where target = $_GET['id'] limit 10; ?>
@@ -63,10 +63,10 @@
 						<div>+REP really nice and patient</div>
 					</div>
 				</div>
-      </div><!--/row-->
-    </div><!--/span-->
+			</div><!--/row-->
+		</div><!--/span-->
 		<?php include('includes/sidebar.php'); ?>
-  </div><!--/row-->
+	</div><!--/row-->
 </div><!--/.container-->
 
 <?php include('includes/footer.php'); ?>

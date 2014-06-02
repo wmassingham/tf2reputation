@@ -4,7 +4,7 @@ html, body {
 	background-color: #ddd;
 }
 
-a:hover {
+a img:hover, a:hover {
 	text-decoration: none;
 	opacity: 0.4;
 }
@@ -13,11 +13,11 @@ a:hover {
 	border-radius: 0 0 10px 10px;
 }
 
-.navbar a {
-	opacity: 0.75;
+.navbar a, .navbar a img {
+	opacity: 0.9;
 }
 
-.navbar a:hover {
+.navbar a:hover, .navbar a img:hover {
 	opacity: 1;
 }
 
@@ -53,6 +53,21 @@ footer {
 
 .jumbotron {
 	background-color: #fff;
+	overflow: hidden;
+}
+
+.jumbotron h1 {
+	font-size: 36px;
+}
+
+@media (min-width: 992px) {
+	.jumbotron h1 {
+		font-size: 63px;
+	}
+}
+
+.community-links > div {
+	padding-right: 0px;
 }
 
 .well {
