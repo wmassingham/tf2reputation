@@ -2,15 +2,16 @@
 
 	require_once('includes/apis.php');
 	require_once('includes/connection.php');
-	
+
 	if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-		$userdata = new SteamAPI($_GET['id']);
-		if (!isset($userdata->data->response->players)) { die("no players found"); }
+		$id = $_GET['id'];
 	} else {
-		//die("bad ID");
-		$userdata = new SteamAPI("76561197987981459");
+		die('bad id');
 	}
-	
+
+	$userdata = new SteamAPI($id);
+	if (!isset($userdata->data->response->players)) { die('no players found'); }
+
 	$pagetitle = $userdata->data->response->players[0]->personaname;
 	include('includes/header.php') 
 
@@ -19,53 +20,56 @@
 <div class="container">
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-xs-12 col-sm-9">
-			<p class="pull-right visible-xs">
+<!--			<p class="pull-right visible-xs">
 				<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-			</p>
+			</p>-->
 			<div class="row jumbotron">
-				<div class="col-sm-4 col-xs-3">
+				<div class="col-xs-4">
 					<?php echo '<img class="img-responsive avatar-full ' . $userdata->onlineState . '" alt="Player avatar" src="' . $userdata->data->response->players[0]->avatarfull . '">'; ?>
 				</div>
-				<div class="col-sm-8 col-xs-9">
+				<div class="col-xs-8">
 					<div class="row">
 						<div class="col-md-12"><h1><?php echo $userdata->data->response->players[0]->personaname; ?></h1></div>
 					</div>
 					<div class="row community-links">
 						<?php
 							$id = $userdata->data->response->players[0]->steamid;
-							echo '<div class="col-xs-2"><a href="http://steamcommunity.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steam.svg"></a></div>
-								<div class="col-xs-2"><a href="http://www.tf2outpost.com/user/' . $id . '"><img class="img-responsive" src="/img/tf2outpost.svg"></a></div>
-								<div class="col-xs-2"><a href="http://backpack.tf/profiles/' . $id . '"><img class="img-responsive" src="/img/backpacktf.svg"></a></div>
-								<div class="col-xs-2"><a href="http://steamrep.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steamrep.svg"></a></div>';
+							echo '<div class="col-xs-3 col-md-2"><a href="http://steamcommunity.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steam.svg"></a></div>
+								  <div class="col-xs-3 col-md-2"><a href="http://www.tf2outpost.com/user/' . $id . '"><img class="img-responsive" src="/img/tf2outpost.svg"></a></div>
+								  <div class="col-xs-3 col-md-2"><a href="http://backpack.tf/profiles/' . $id . '"><img class="img-responsive" src="/img/backpacktf.svg"></a></div>
+								  <div class="col-xs-3 col-md-2"><a href="http://steamrep.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steamrep.svg"></a></div>';
 						?>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-1 col-sm-1 col-lg-1"></div>
-				<div class="col-9 col-sm-9 col-lg-9">
-					<?php // select * from comments where target = $_GET['id'] limit 10; ?>
-					<div class="row well comment">
-						<div><img class="avatar-small ingame" alt="" src="http://media.steampowered.com/steamcommunity/public/images/avatars/3e/3e2b0ef3dcdb4adfc9bdb6c2d1d719d58de36085_full.jpg"></div>
-						<div>
-							<div><span>Cap'n Ross Dullblade!</span><span>Jul 23 @ 3:09am</span></div>
-							<div>+1 Nice guy to deal with. I went first, he followed.</div>
-						</div>
-					</div>
-					<div class="row well comment">
-						<div><img class="avatar-small online" alt="" src="http://media.steampowered.com/steamcommunity/public/images/avatars/e7/e771ed201c034029c0dd090982d3d09415856a7f_full.jpg"></div>
-						<div><span>flynnwhite1337</span><span>Jul 12 @ 3:17pm</span></div>
-						<div>nice and fast trader ++++rep</div>
-					</div>
-					<div class="row well comment">
-						<div><img class="avatar-small offline" alt="" src="http://media.steampowered.com/steamcommunity/public/images/avatars/99/9924fa3a4c8b1bef6cf8ecd5694447e02746709d_full.jpg"></div>
-						<div><span>Orko</span><span>Jul 12 @ 3:02am</span></div>
-						<div>+REP really nice and patient</div>
-					</div>
+				<div class="col-sm-9 col-xs-offset-1 col-xs-10">
+					<?php
+						$row = array();
+						$stmt = mysqli_prepare($link, 'select * from comments where target=? order by timestamp desc limit 5');
+						mysqli_stmt_bind_param($stmt, 'i', $id);
+						mysqli_stmt_execute($stmt) or die('Failed to execute query: ' . mysqli_error($link));
+						mysqli_stmt_store_result($stmt);
+						mysqli_stmt_bind_result($stmt, $row['commentid'], $row['author'], $row['target'],
+							$row['timestamp'], $row['text'], $row['link'], $row['vote'], $row['moderated']);
+						if (mysqli_stmt_num_rows($stmt) > 0) {
+							while (mysqli_stmt_fetch($stmt)) {
+								$commentuser = new SteamAPI($row['author']);
+								echo '<div class="row well comment">
+										<img class="avatar-small '.$commentuser->onlineState.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
+										<div style="overflow:hidden;">'.$commentuser->data->response->players[0]->personaname.'<br class="visible-xs">'.$row['timestamp'].'</div>
+										<span>'.$row['text'].'</span>
+									</div>';
+							}
+						} else {
+							echo '<div class="row well comment text-muted">No comments for this user yet.</div>';
+						}
+						mysqli_stmt_free_result($stmt);
+					?>
 				</div>
 			</div><!--/row-->
 		</div><!--/span-->
-		<?php include('includes/sidebar.php'); ?>
+		<?php // include('includes/sidebar.php'); ?>
 	</div><!--/row-->
 </div><!--/.container-->
 

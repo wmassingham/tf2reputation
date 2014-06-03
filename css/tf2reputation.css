@@ -37,9 +37,9 @@ a img:hover, a:hover {
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	/* Negative indent footer by its height */
+	/* Negative indent footer by its height (inc. margin) */
 	margin: 0 auto -60px;
-	/* Pad bottom by footer height */
+	/* Pad bottom by footer height (inc. margin)*/
 	padding: 0 0 60px;
 }
 
@@ -48,21 +48,29 @@ footer {
 	height: 60px;
 	background-color: #fff;
 	border-radius: 5px 5px 0 0;
-	margin-top: 20px;
+	padding: 15px 20px !important;
 }
 
 .jumbotron {
 	background-color: #fff;
 	overflow: hidden;
+	padding:15px;
+	margin-bottom: 20px;
 }
 
 .jumbotron h1 {
 	font-size: 36px;
+	margin: 0 !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
+	.jumbotron {
+		padding: 40px 60px !important;
+	}
+
 	.jumbotron h1 {
 		font-size: 63px;
+		margin: 15px 0 !important;
 	}
 }
 
@@ -85,6 +93,7 @@ footer {
 	width: 34px;
 	border: 2px solid;
 	border-radius: 2px;
+	margin: 2px 4px 2px 0;
 }
 
 .offline {

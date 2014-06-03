@@ -13,7 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
@@ -47,7 +47,7 @@
 							<li><a href="about.php">About</a></li>
 							<li><a href="rules.php">Rules</a></li>
 							<li><a href="search.php">Search</a></li>
-							<li class="dropdown">
+<!--							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="#">Action</a></li>
@@ -58,7 +58,7 @@
 									<li><a href="#">Separated link</a></li>
 									<li><a href="#">One more separated link</a></li>
 								</ul>
-							</li>
+							</li>-->
 							<?php include('includes/steamuser.php'); ?>
 						</ul>
 

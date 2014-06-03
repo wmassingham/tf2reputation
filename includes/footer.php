@@ -3,7 +3,7 @@
     <!-- <hr> -->
 
 	<footer class="container">
-		<p class="text-muted">footer</p>
+		<p class="text-muted pull-right">&copy; 2013. <a href="http://steampowered.com">Powered by Steam.</a></p>
 	</footer>
 	
     <!-- Bootstrap core JavaScript -->
