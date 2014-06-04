@@ -60,17 +60,17 @@ footer {
 
 .jumbotron h1 {
 	font-size: 36px;
-	margin: 0 !important;
+	margin: 0 0 4px 0 !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	.jumbotron {
 		padding: 40px 60px !important;
 	}
 
 	.jumbotron h1 {
 		font-size: 63px;
-		margin: 15px 0 !important;
+		margin: 0 0 15px 0 !important;
 	}
 }
 

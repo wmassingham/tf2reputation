@@ -67,6 +67,7 @@ class SteamAPI {
 	public $steamid;
 	public $data;
 	public $onlineState = "offline";
+	public $username = "";
 	private $apikey = "F88585185B492CE2140464101ED7574C";
 
 	public function __construct($steamid) {
@@ -74,6 +75,12 @@ class SteamAPI {
 		$this->steamid = $steamid;
 		$this->data = json_decode($this->cache->get_data("$this->steamid", "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=$this->apikey&steamids=$this->steamid"));
 		
+		if (!isset($this->data->response->players[0]->steamid)) {
+			die('no players found');
+		}
+
+		$this->username = htmlspecialchars($this->data->response->players[0]->personaname);
+
 		if (isset($this->data->response->players[0]->gameid)) {
 			$this->onlineState = "ingame";
 		} else if ($this->data->response->players[0]->personastate == 1) {

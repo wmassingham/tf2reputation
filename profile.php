@@ -12,7 +12,7 @@
 	$userdata = new SteamAPI($id);
 	if (!isset($userdata->data->response->players)) { die('no players found'); }
 
-	$pagetitle = $userdata->data->response->players[0]->personaname;
+	$pagetitle = $userdata->username;
 	include('includes/header.php') 
 
 ?>
@@ -29,15 +29,14 @@
 				</div>
 				<div class="col-xs-8">
 					<div class="row">
-						<div class="col-md-12"><h1><?php echo $userdata->data->response->players[0]->personaname; ?></h1></div>
+						<div class="col-md-12"><h1><?php echo $userdata->username; ?></h1></div>
 					</div>
 					<div class="row community-links">
 						<?php
-							$id = $userdata->data->response->players[0]->steamid;
-							echo '<div class="col-xs-3 col-md-2"><a href="http://steamcommunity.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steam.svg"></a></div>
-								  <div class="col-xs-3 col-md-2"><a href="http://www.tf2outpost.com/user/' . $id . '"><img class="img-responsive" src="/img/tf2outpost.svg"></a></div>
-								  <div class="col-xs-3 col-md-2"><a href="http://backpack.tf/profiles/' . $id . '"><img class="img-responsive" src="/img/backpacktf.svg"></a></div>
-								  <div class="col-xs-3 col-md-2"><a href="http://steamrep.com/profiles/' . $id . '"><img class="img-responsive" src="/img/steamrep.svg"></a></div>';
+							echo '<div class="col-xs-3 col-md-2"><a href="http://steamcommunity.com/profiles/' . $id . '"><img class="img-responsive" alt="'.$userdata->username.' on Steam Community" src="/img/steam.svg"></a></div>
+								  <div class="col-xs-3 col-md-2"><a href="http://www.tf2outpost.com/user/' . $id . '"><img class="img-responsive" alt="'.$userdata->username.' on TF2Outpost" src="/img/tf2outpost.svg"></a></div>
+								  <div class="col-xs-3 col-md-2"><a href="http://backpack.tf/profiles/' . $id . '"><img class="img-responsive" alt="'.$userdata->username.' on backpack.tf" src="/img/backpacktf.svg"></a></div>
+								  <div class="col-xs-3 col-md-2"><a href="http://steamrep.com/profiles/' . $id . '"><img class="img-responsive" alt="'.$userdata->username.' on SteamRep" src="/img/steamrep.svg"></a></div>';
 						?>
 					</div>
 				</div>
@@ -56,8 +55,11 @@
 							while (mysqli_stmt_fetch($stmt)) {
 								$commentuser = new SteamAPI($row['author']);
 								echo '<div class="row well comment">
-										<img class="avatar-small '.$commentuser->onlineState.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
-										<div style="overflow:hidden;">'.$commentuser->data->response->players[0]->personaname.'<br class="visible-xs">'.$row['timestamp'].'</div>
+										<img class="avatar-small '.$commentuser->onlineState.'" alt="'.$commentuser->username.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
+										<div style="overflow:hidden;">
+											<span class="userlink">'.$commentuser->username.'</span> <br class="visible-xs">
+											<span class="timestamp">'.$row['timestamp'].'</span>
+										</div>
 										<span>'.$row['text'].'</span>
 									</div>';
 							}
