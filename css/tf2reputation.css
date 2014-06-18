@@ -107,3 +107,31 @@ footer {
 .ingame {
 	border-color: #9bc861;
 }
+
+input {
+	height: 34px;
+	margin: 2px;
+	padding: 0 8px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+
+}
+
+.vote {
+	font-size: 3em;
+	font-weight: bold;
+	line-height: 0;
+	vertical-align: middle;
+}
+
+.vote-plus {
+	color: green;
+}
+
+.vote-minus {
+	color: red;
+}
+
+.vote-unselected {
+	color: black;
+}

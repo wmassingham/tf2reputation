@@ -13,6 +13,6 @@
 		<script src="scripts/offcanvas.js"></script>
 
 		<script src="//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
-		<script>$('h1').fitText(1.0);</script>
+		<script src="/scripts/script.js"></script>
 	</body>
 </html>

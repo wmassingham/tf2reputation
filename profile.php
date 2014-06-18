@@ -44,6 +44,22 @@
 			<div class="row">
 				<div class="col-sm-9 col-xs-offset-1 col-xs-10">
 					<?php
+						if (isset($_SESSION['id']) || $openid->validate()) {
+							echo '<div class="row well">
+									<form method="post" action="comment.php">
+										<a href="profile.php?id='.$loggedinuserdata->data->response->players[0]->steamid.'">
+											<img class="avatar-small '.$loggedinuserdata->onlineState.'" alt="Player avatar"
+												src="'.$loggedinuserdata->data->response->players[0]->avatarfull.'">
+										</a>
+										<input type="text" name="comment" id="comment" placeholder="Add a comment"></input>
+										<input type="hidden" name="vote" id="vote" value="0"></input>
+										<a href="#"><span class="vote vote-unselected vote-plus">&plus;</span></a>
+										<a href="#"><span class="vote vote-unselected vote-minus">&minus;</span></a>
+										<input type="submit"></input>
+									</form>
+								</div>';
+						}
+
 						$row = array();
 						$stmt = mysqli_prepare($link, 'select * from comments where target=? order by timestamp desc limit 5');
 						mysqli_stmt_bind_param($stmt, 'i', $id);

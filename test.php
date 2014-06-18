@@ -1,6 +1,6 @@
 <?php
 
-phpinfo(); die();
+//phpinfo(); die();
 	session_start();
 
 	require('includes/apis.php');

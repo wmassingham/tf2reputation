@@ -67,7 +67,7 @@
 							<?php
 								$openid = new LightOpenID('tf2reputation.com');
 
-								if($openid->validate() || isset($_SESSION['id'])) {
+								if(isset($_SESSION['id']) || $openid->validate()) {
 									$userid = explode("/", $_SESSION['id'])[5];
 									$loggedinuserdata = new SteamAPI($userid);
 
