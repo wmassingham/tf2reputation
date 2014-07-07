@@ -4,9 +4,13 @@ html, body {
 	background-color: #ddd;
 }
 
-a img:hover, a:hover {
+a:hover {
 	text-decoration: none;
-	opacity: 0.4;
+	opacity: 0.5;
+}
+
+a img:hover {
+    opacity: 0.8;
 }
 
 .navbar {
@@ -115,6 +119,10 @@ input {
 	border: 1px solid #ccc;
 	border-radius: 2px;
 
+}
+
+.userlink {
+    font-weight: bold;
 }
 
 .vote {

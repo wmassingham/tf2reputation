@@ -71,9 +71,14 @@
 							while (mysqli_stmt_fetch($stmt)) {
 								$commentuser = new SteamAPI($row['author']);
 								echo '<div class="row well comment">
-										<img class="avatar-small '.$commentuser->onlineState.'" alt="'.$commentuser->username.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
+										<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">
+											<img class="avatar-small '.$commentuser->onlineState.'" alt="'.$commentuser->username.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
+										</a>
 										<div style="overflow:hidden;">
-											<span class="userlink">'.$commentuser->username.'</span> <br class="visible-xs">
+											<span class="userlink">
+												<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">'.$commentuser->username.'</a>
+											</span>
+											<br class="visible-xs">
 											<span class="timestamp">'.$row['timestamp'].'</span>
 										</div>
 										<span>'.$row['text'].'</span>
