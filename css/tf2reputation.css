@@ -112,13 +112,13 @@ footer {
 	border-color: #9bc861;
 }
 
-input {
+input, button {
 	height: 34px;
-	margin: 2px;
+	margin-top: 2px;
 	padding: 0 8px;
 	border: 1px solid #ccc;
 	border-radius: 2px;
-
+	vertical-align: middle;
 }
 
 .userlink {
@@ -126,20 +126,26 @@ input {
 }
 
 .vote {
-	font-size: 3em;
+	font-size: 2.4em;
 	font-weight: bold;
 	line-height: 0;
-	vertical-align: middle;
+	/*vertical-align: middle;*/
 }
 
 .vote-plus {
-	color: green;
+	color: green !important;
 }
 
 .vote-minus {
-	color: red;
+	color: red !important;
 }
 
 .vote-unselected {
-	color: black;
+	color: black !important;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active,
+.btn-default.active, .open .dropdown-toggle.btn-default {
+	background-color: #fff;
+	border-color: #ccc;
 }

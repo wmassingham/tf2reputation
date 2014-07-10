@@ -14,5 +14,6 @@
 
 		<script src="//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
 		<script src="/scripts/script.js"></script>
+		<script><?php echo $jsOutput; ?></script>
 	</body>
 </html>

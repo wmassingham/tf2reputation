@@ -3,6 +3,8 @@
 
 	require_once('openid.php');
 	require_once('apis.php');
+
+	$jsOutput = '';
 ?>
 
 <!DOCTYPE html>
