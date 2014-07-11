@@ -65,7 +65,8 @@
 						}
 
 						$row = array();
-						$stmt = mysqli_prepare($link, 'select * from comments where target=? order by timestamp desc limit 5');
+						$stmt = mysqli_prepare($link, 'select commentid, author, target, timestamp, text, link, vote, moderated
+							from comments where target=? order by timestamp desc limit 5');
 						mysqli_stmt_bind_param($stmt, 'i', $id);
 						mysqli_stmt_execute($stmt) or die('Failed to execute query: ' . mysqli_error($link));
 						mysqli_stmt_store_result($stmt);
@@ -74,7 +75,19 @@
 						if (mysqli_stmt_num_rows($stmt) > 0) {
 							while (mysqli_stmt_fetch($stmt)) {
 								$commentuser = new SteamAPI($row['author']);
-								echo '<div class="row well comment">
+								$commentbg = 'bg-primary';
+								switch ($row['vote']) {
+									case 1:
+										$commentbg = 'bg-success';
+										break;
+									case -1:
+										$commentbg = 'bg-danger';
+										break;
+									default:
+										$commentbg = 'bg-primary';
+										break;
+								}
+								echo '<div class="row well comment '.$commentbg.'">
 										<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">
 											<img class="avatar-small '.$commentuser->onlineState.'" alt="'.$commentuser->username.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
 										</a>

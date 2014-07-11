@@ -4,7 +4,7 @@ function randHexColor() {
 
 $('h1').fitText(1.0);
 
-$('[data-toggle="tooltip"]').tooltip({'placement': 'top'});
+$('[data-toggle="tooltip"]').tooltip({placement: 'top', container: 'body'});
 
 $('.vote-plus').click(function(){
 	$('#vote').val('1');
