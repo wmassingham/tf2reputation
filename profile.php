@@ -45,7 +45,7 @@
 				<div class="col-sm-9 col-xs-offset-1 col-xs-10">
 					<?php
 						if (isset($_SESSION['id']) || $openid->validate()) {
-							echo '<div class="row well">
+							echo '<div class="row comment bg-none">
 									<form method="post" >
 										<a href="profile.php?id='.$loggedinuserdata->data->response->players[0]->steamid.'">
 											<img class="avatar-small '.$loggedinuserdata->onlineState.'" alt="Player avatar"
@@ -87,11 +87,20 @@
 										$commentbg = 'bg-primary';
 										break;
 								}
-								echo '<div class="row well comment '.$commentbg.'">
+								echo '<div class="row comment '.$commentbg.'">
 										<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">
 											<img class="avatar-small '.$commentuser->onlineState.'" alt="'.$commentuser->username.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
-										</a>
-										<div style="overflow:hidden;">
+										</a>';
+								switch ($row['vote']) {
+									case 1:
+									default:
+										echo '<img class="icon-sm rep-positive" alt="Thumbs up" src="/img/thumbsup.svg">';
+										break;
+									case -1:
+										echo '<img class="icon-sm rep-negative" alt="Thumbs down" src="/img/thumbsdown.svg">';
+									break;
+								}
+								echo '<div style="overflow:hidden;">
 											<span class="userlink">
 												<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">'.$commentuser->username.'</a>
 											</span>
