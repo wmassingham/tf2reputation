@@ -29,7 +29,31 @@
 				</div>
 				<div class="col-xs-8">
 					<div class="row">
-						<div class="col-md-12"><h1><?php echo $userdata->username; ?></h1></div>
+						<?php
+							$votes = array();
+							// credit: http://stackoverflow.com/a/16636590/217374
+							$stmt = mysqli_prepare($link, 'SELECT a.vote, count(b.vote) as count
+								FROM (SELECT 1 vote UNION ALL SELECT -1 vote) a
+								LEFT JOIN comments b ON a.vote = b.vote
+								AND b.target=?
+								GROUP BY a.vote
+								ORDER BY a.vote DESC;');
+							mysqli_stmt_bind_param($stmt, 'i', $id);
+							mysqli_stmt_execute($stmt) or die('Failed to count votes: ' . mysqli_error($link));
+							mysqli_stmt_store_result($stmt);
+							mysqli_stmt_bind_result($stmt, $vote, $count);
+							while (mysqli_stmt_fetch($stmt)) {
+								$votes[$vote] = $count;
+							}
+							mysqli_stmt_free_result($stmt);
+							echo '<div class="col-md-12">
+									<h1>
+										<span>'.$userdata->username.'</span>
+										<span>'.$votes[1].'</span>
+										<span>'.$votes[-1].'</span>
+									</h1>
+								</div>';
+						?>
 					</div>
 					<div class="row community-links">
 						<?php
@@ -75,22 +99,7 @@
 						if (mysqli_stmt_num_rows($stmt) > 0) {
 							while (mysqli_stmt_fetch($stmt)) {
 								$commentuser = new SteamAPI($row['author']);
-								$commentbg = 'bg-primary';
-								switch ($row['vote']) {
-									case 1:
-										$commentbg = 'bg-success';
-										break;
-									case -1:
-										$commentbg = 'bg-danger';
-										break;
-									default:
-										$commentbg = 'bg-primary';
-										break;
-								}
-								echo '<div class="row comment '.$commentbg.'">
-										<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">
-											<img class="avatar-small '.$commentuser->onlineState.'" alt="'.$commentuser->username.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
-										</a>';
+								echo '<div class="row comment">';
 								switch ($row['vote']) {
 									case 1:
 									default:
@@ -100,7 +109,10 @@
 										echo '<img class="icon-sm rep-negative" alt="Thumbs down" src="/img/thumbsdown.svg">';
 									break;
 								}
-								echo '<div style="overflow:hidden;">
+								echo '<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">
+											<img class="avatar-small '.$commentuser->onlineState.'" alt="'.$commentuser->username.'" src="'.$commentuser->data->response->players[0]->avatarfull.'">
+										</a>
+										<div style="overflow:hidden;">
 											<span class="userlink">
 												<a href="profile.php?id='.$commentuser->data->response->players[0]->steamid.'">'.$commentuser->username.'</a>
 											</span>
