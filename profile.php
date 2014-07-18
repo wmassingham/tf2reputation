@@ -49,8 +49,8 @@
 							echo '<div class="col-md-12">
 									<h1>
 										<span>'.$userdata->username.'</span>
-										<span>'.$votes[1].'</span>
-										<span>'.$votes[-1].'</span>
+										<span class="text-success">&plus;'.$votes[1].'</span>
+										<span class="text-danger">&minus;'.$votes[-1].'</span>
 									</h1>
 								</div>';
 						?>
@@ -78,9 +78,9 @@
 										<input type="text" name="comment" id="comment" placeholder="Add a comment">
 										<input type="hidden" name="vote" id="vote" value="0">
 										<div class="btn-group">
-											<button type="button" class="btn btn-default vote vote-unselected vote-plus"
+											<button type="button" id="vote-plus" class="btn btn-default btn-vote"
 												data-toggle="tooltip" title="Positive rep">&plus;</button>
-											<button type="button" class="btn btn-default vote vote-unselected vote-minus"
+											<button type="button" id="vote-minus" class="btn btn-default btn-vote"
 												data-toggle="tooltip" title="Negative rep">&minus;</button>
 										</div>
 										<input type="submit">

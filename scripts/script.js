@@ -6,14 +6,14 @@ $('h1').fitText(1.0);
 
 $('[data-toggle="tooltip"]').tooltip({placement: 'top', container: 'body'});
 
-$('.vote-plus').click(function(){
+$('#vote-plus').click(function(){
 	$('#vote').val('1');
-	$('.vote-minus').addClass('vote-unselected');
-	$(this).removeClass('vote-unselected');
+	$('#vote-minus').css('color', 'black');
+	$(this).css('color', 'green');
 });
 
-$('.vote-minus').click(function(){
+$('#vote-minus').click(function(){
 	$('#vote').val('-1');
-	$('.vote-plus').addClass('vote-unselected');
-	$(this).removeClass('vote-unselected');
+	$('#vote-plus').css('color', 'black');
+	$(this).css('color', 'red');
 });
