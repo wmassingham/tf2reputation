@@ -70,12 +70,14 @@
 					<?php
 						if (isset($_SESSION['id']) || $openid->validate()) {
 							echo '<div class="row comment bg-none">
-									<form method="post" >
+									<form method="post" action="comment.php">
 										<a href="profile.php?id='.$loggedinuserdata->data->response->players[0]->steamid.'">
 											<img class="avatar-small '.$loggedinuserdata->onlineState.'" alt="Player avatar"
 												src="'.$loggedinuserdata->data->response->players[0]->avatarfull.'">
 										</a>
 										<input type="text" name="comment" id="comment" placeholder="Add a comment">
+										<input type="hidden" name="userid" id="userid" value="'.$loggedinuserdata->data->response->players[0]->steamid.'">
+										<input type="hidden" name="id" id="id" value="'.$id.'">
 										<input type="hidden" name="vote" id="vote" value="0">
 										<div class="btn-group">
 											<button type="button" id="vote-plus" class="btn btn-default btn-vote"
