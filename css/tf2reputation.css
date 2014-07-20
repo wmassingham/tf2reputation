@@ -4,13 +4,10 @@ html, body {
 	background-color: #ddd;
 }
 
-a:hover, input:hover, button:hover {
+a:hover, a img:hover {
 	text-decoration: none;
-	opacity: 0.5;
-}
-
-a img:hover {
-    opacity: 0.8;
+	color: #428bca;
+	opacity: 0.66;
 }
 
 .navbar {
@@ -126,10 +123,9 @@ footer {
 
 input, button {
 	height: 34px;
-	margin-top: 2px;
 	padding: 0 8px;
 	border: 1px solid #ccc;
-	border-radius: 2px;
+	border-radius: 4px;
 	vertical-align: middle;
 }
 
@@ -140,8 +136,7 @@ input, button {
 .btn-vote {
 	font-size: 2.4em;
 	font-weight: bold;
-	line-height: 0;
-	/*vertical-align: middle;*/
+	line-height: 21px;
 }
 
 .rep-positive {
@@ -152,14 +147,4 @@ input, button {
 .rep-negative {
 	border-color: #a94442;
 	padding: 1px;
-}
-
-.vote-unselected {
-	color: black !important;
-}
-
-.btn-default:hover, .btn-default:focus, .btn-default:active,
-.btn-default.active, .open .dropdown-toggle.btn-default {
-	background-color: #fff;
-	border-color: #ccc;
 }

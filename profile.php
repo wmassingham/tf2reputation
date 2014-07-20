@@ -10,7 +10,6 @@
 	}
 
 	$userdata = new SteamAPI($id);
-	if (!isset($userdata->data->response->players)) { die('no players found'); }
 
 	$pagetitle = $userdata->username;
 	include('includes/header.php') 
@@ -70,22 +69,29 @@
 					<?php
 						if (isset($_SESSION['id']) || $openid->validate()) {
 							echo '<div class="row comment bg-none">
-									<form method="post" action="comment.php">
-										<a href="profile.php?id='.$loggedinuserdata->data->response->players[0]->steamid.'">
-											<img class="avatar-small '.$loggedinuserdata->onlineState.'" alt="Player avatar"
-												src="'.$loggedinuserdata->data->response->players[0]->avatarfull.'">
-										</a>
-										<input type="text" name="comment" id="comment" placeholder="Add a comment">
+									<form method="post" action="comment.php" class="form-inline">
+										<div class="form-group">
+											<a href="profile.php?id='.$loggedinuserdata->data->response->players[0]->steamid.'">
+												<img class="icon-sm '.$loggedinuserdata->onlineState.'" alt="Player avatar"
+													src="'.$loggedinuserdata->data->response->players[0]->avatarfull.'">
+											</a>
+										</div>
+										<div class="form-group">
+											<input type="text" name="comment" id="comment" class="form-control" placeholder="Add a comment" required>
+										</div>
 										<input type="hidden" name="userid" id="userid" value="'.$loggedinuserdata->data->response->players[0]->steamid.'">
 										<input type="hidden" name="id" id="id" value="'.$id.'">
-										<input type="hidden" name="vote" id="vote" value="0">
-										<div class="btn-group">
-											<button type="button" id="vote-plus" class="btn btn-default btn-vote"
-												data-toggle="tooltip" title="Positive rep">&plus;</button>
-											<button type="button" id="vote-minus" class="btn btn-default btn-vote"
-												data-toggle="tooltip" title="Negative rep">&minus;</button>
+										<div class="form-group btn-group" data-toggle="buttons">
+											<label id="vote-plus" class="btn btn-default btn-vote text-success" data-toggle="tooltip" title="Positive rep">
+												<input type="radio" name="vote" value="1" required>
+												&plus;
+											</label>
+											<label id="vote-minus" class="btn btn-default btn-vote text-danger" data-toggle="tooltip" title="Negative rep">
+												<input type="radio" name="vote" value="-1" required>
+												&minus;
+											</label>
 										</div>
-										<input type="submit">
+										<div class="form-group"><button type="submit" class="btn btn-default">Submit</button></div>
 									</form>
 								</div>';
 						}
