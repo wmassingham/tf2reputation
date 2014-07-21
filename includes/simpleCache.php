@@ -1,7 +1,9 @@
 <?php
 
+//namespace Gilbitron\Util;
+
 /*
- * SimpleCache v1.3
+ * SimpleCache v1.4.1
  *
  * By Gilbert Pellegrom
  * http://dev7studios.com
@@ -9,25 +11,32 @@
  * Free to use and abuse under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
-
 class SimpleCache {
 
-	private $cache_path;
-	// Length of time to cache a file in seconds
-	private $cache_time = 3600;
+	// Path to cache folder (with trailing /)
+	public $cache_path = 'cache/';
+	// Length of time to cache a file (in seconds)
+	public $cache_time = 3600;
+	// Cache file extension
+	public $cache_extension = '.cache';
 
 	public function __construct($subdir) {
 		// Path to cache folder (with trailing slash)
-		// C:\Users\webster\AppData\Local\Temp\cache
-		$this->cache_path = sys_get_temp_dir() . "/cache/$subdir/";
+		// %localappdata%\temp\cache
+		if ($subdir) {
+			$this->cache_path = sys_get_temp_dir() . "/cache/$subdir/";
+		} else {
+			$this->cache_path = sys_get_temp_dir() . "/cache/";
+		}
 		if (!file_exists($this->cache_path)) {
 			mkdir($this->cache_path, 0777, true);
 		}
 	}
 
 	// This is just a functionality wrapper function
-	function get_data($label, $url) {
-		if ($data = $this->get_cache($label)) {
+	public function get_data($label, $url)
+	{
+		if($data = $this->get_cache($label)){
 			return $data;
 		} else {
 			$data = $this->do_curl($url);
@@ -36,38 +45,38 @@ class SimpleCache {
 		}
 	}
 
-	
-
-	function set_cache($label, $data) {
-		file_put_contents($this->cache_path . $this->safe_filename($label) . '.cache', $data);
-		return $data;
+	public function set_cache($label, $data)
+	{
+		file_put_contents($this->cache_path . $this->safe_filename($label) . $this->cache_extension, $data);
 	}
 
-	function get_cache($label) {
-		if ($this->is_cached($label)) {
-			$filename = $this->cache_path . $this->safe_filename($label) . '.cache';
+	public function get_cache($label)
+	{
+		if($this->is_cached($label)){
+			$filename = $this->cache_path . $this->safe_filename($label) . $this->cache_extension;
 			return file_get_contents($filename);
 		}
 
 		return false;
 	}
 
-	function is_cached($label) {
-		$filename = $this->cache_path . $this->safe_filename($label) . '.cache';
+	public function is_cached($label)
+	{
+		$filename = $this->cache_path . $this->safe_filename($label) . $this->cache_extension;
 
-		if (file_exists($filename) && (filemtime($filename) + $this->cache_time >= time()))
-			return true;
+		if(file_exists($filename) && (filemtime($filename) + $this->cache_time >= time())) return true;
 
 		return false;
 	}
 
-	// Helper function for retrieving data from url
-	function do_curl($url) {
-		if (function_exists("curl_init")) {
+	//Helper function for retrieving data from url
+	public function do_curl($url)
+	{
+		if(function_exists("curl_init")){
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 			$content = curl_exec($ch);
 			curl_close($ch);
 			return $content;
@@ -76,11 +85,11 @@ class SimpleCache {
 		}
 	}
 
-	// Helper function to validate filenames
-	function safe_filename($filename) {
-		return preg_replace('/[^0-9a-z\.\_\-]/i', '', strtolower($filename));
+	//Helper function to validate filenames
+	private function safe_filename($filename)
+	{
+		return preg_replace('/[^0-9a-z\.\_\-]/i','', strtolower($filename));
 	}
-
 }
 
 ?>
