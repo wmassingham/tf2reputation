@@ -77,7 +77,8 @@
 											</a>
 										</div>
 										<div class="form-group">
-											<input type="text" name="comment" id="comment" class="form-control" placeholder="Add a comment" required>
+											<input type="text" name="comment" id="comment" class="form-control btn-default"
+												placeholder="Add a comment" minlength="4" maxlength="80" required>
 										</div>
 										<input type="hidden" name="userid" id="userid" value="'.$loggedinuserdata->data->response->players[0]->steamid.'">
 										<input type="hidden" name="id" id="id" value="'.$id.'">

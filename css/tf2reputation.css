@@ -139,6 +139,14 @@ input, button {
 	line-height: 21px;
 }
 
+#vote-plus {
+	color: #3c763d;
+}
+
+#vote-minus {
+	color: #a94442;
+}
+
 .rep-positive {
 	border-color: #3c763d;
 	padding: 1px;

@@ -27,7 +27,7 @@
             alwaysShow: false, // if true the indicator it's always shown.
             threshold: 10, // Represents how many chars left are needed to show up the counter
             warningClass: 'label label-success',
-            limitReachedClass: 'label label-important',
+            limitReachedClass: 'label label-important label-danger',
             separator: ' / ',
             preText: '',
             postText: '',
@@ -73,7 +73,7 @@
       /**
       * Return the length of the specified input in UTF8 encoding.
       *
-      * @param input
+      * @param string
       * @return {number}
       */
       function utf8Length(string) {
@@ -368,7 +368,7 @@
           }
         });
 
-        currentInput.keyup(function () {
+        currentInput.on('input', function () {
           var remaining = remainingChars(currentInput, getMaxLength(currentInput)),
               output = true;
           if (options.validate && remaining < 0) {
